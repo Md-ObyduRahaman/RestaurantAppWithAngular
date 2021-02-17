@@ -11,7 +11,7 @@ import {RestoService} from '../resto.service'
 export class AddRestoComponent implements OnInit {
 
   constructor(private resto:RestoService) { }
-
+  alert: boolean=false;
   addResto=new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
@@ -24,9 +24,15 @@ export class AddRestoComponent implements OnInit {
   {
     this.resto.saveResto(this.addResto.value).subscribe((result)=>
     {
+      this.alert=true;
       console.warn(result)
     }
     )
+    this.addResto.reset({})
+  }
+  closeAlert()
+  {
+    this.alert=false;
   }
 
 }
