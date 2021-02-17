@@ -19,4 +19,9 @@ url="http://localhost:3000/restaurant"
     return this.http.post(this.url,data);
   }
 
+  deleteResto(id:number)
+  {
+    return this.http.delete(`${this.url}/${id}`)
+  }
+
 }

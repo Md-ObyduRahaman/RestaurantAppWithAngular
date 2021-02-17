@@ -17,5 +17,12 @@ export class ListRestoComponent implements OnInit {
     })
 
   }
+  deleteResto(item:number){
+    console.warn(this.collection)
+    this.collection.splice(item-1,1)
+    this.resto.deleteResto(item).subscribe((result)=>{
+      console.warn(result)
+    })
+  }
 
 }
