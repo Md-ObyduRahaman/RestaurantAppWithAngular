@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import {FormGroup,FormControl} from '@angular/forms'
+import {RestoService} from '../resto.service'
+
 @Component({
   selector: 'app-add-resto',
   templateUrl: './add-resto.component.html',
@@ -8,7 +10,7 @@ import {FormGroup,FormControl} from '@angular/forms'
 })
 export class AddRestoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private resto:RestoService) { }
 
   addResto=new FormGroup({
     name: new FormControl(''),
@@ -20,7 +22,11 @@ export class AddRestoComponent implements OnInit {
   }
   collectResto()
   {
-    console.warn(this.addResto.value);
+    this.resto.saveResto(this.addResto.value).subscribe((result)=>
+    {
+      console.warn(result)
+    }
+    )
   }
 
 }

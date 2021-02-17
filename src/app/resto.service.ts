@@ -13,5 +13,10 @@ url="http://localhost:3000/restaurant"
     
     return this.http.get(this.url)
   }
+  saveResto(data: any)
+  {
+    //console.warn(data)
+    return this.http.post(this.url,data);
+  }
 
 }
